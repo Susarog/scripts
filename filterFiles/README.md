@@ -1,0 +1,1 @@
+this script will filter out a csv file from documents and images. It will create two new but separated csv files. One images.csv will contain JPG, JPEG, PNG, or GIF. documents.csv will contain PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX.
