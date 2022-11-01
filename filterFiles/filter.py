@@ -9,7 +9,9 @@ def readOrphanFile(file,regex):
     with open(file) as csvFile:
         reader = list(csv.reader(csvFile, delimiter=','))
         for row in reader[2:]:
-            if(re.search(regex, row[0]) or row[0] == "Path"):
+            if(len(row) == 0):
+                continue
+            elif(re.search(regex, row[0]) or row[0] == "Path"):
                 listOfFilteredOrphans.append(row)
     return listOfFilteredOrphans
 
@@ -26,7 +28,6 @@ def writeFilterCSV(list, fileName):
 
 def filterFiles(csvFile):
     images = readOrphanFile(csvFile, "([^\s](?=\.(jpg|jpeg|png|gif|bmp)))")
-    print(images)
     documents = readOrphanFile(csvFile,"([^\s](?=\.(pdf|doc|docx|xls|ppt|pptx|xlsx)))")
     writeFilterCSV(images, 'images')
     writeFilterCSV(documents,'documents')
